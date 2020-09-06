@@ -7,6 +7,10 @@ const play = new Howl({
     src: ['audio/play3.mp3']
 })
 
+const pause = new Howl({
+    src: ['audio/pause.mp3']
+})
+
 const noise = new Howl({
     src: ['audio/noise.mp3'],
     loop: true
@@ -26,40 +30,125 @@ const forsound = new Howl({
     loop: true
 })
 
+const revclick = new Howl({
+    src: ['audio/revclick.mp3'],
+    volume: 0.5
+})
+
+
+
+
+
+
 let playing = false;
 let reving = false;
 let forwarding = false;
+let revtimer;
+let fortimer;
+let revcounter = 0;
+let forcounter = 0;
 
 $('#play').click(function(){
-    revsound.stop();
 if(playing == false)
 {
+    stopcounters();
     playing = true;
+
+    song.play();
     play.play();
     noise.play();
 }
-else if(playing ==true)
+else if(playing == true)
 {
     playing = false;
+
     song.pause();
     noise.stop();
+    pause.play();
 }
 })
 
-$('#stop').click(function(){
-    noise.stop();
-    song.stop();
-    stopsound.play();
-    revsound.stop();
+$('#stop').click(function()
+{
+    stopcounters();
     playing = false;
-    reving = false;
+
+    noise.stop();
+    song.pause();
+    stopsound.play();
 })
 
 $('#rev').click(function(){
-    reving = true;
-    playing = false;
-    noise.stop();
-    song.pause();
-    revsound.play();
-    
+    if(reving == false)
+    {
+        clearInterval(fortimer);
+        reving = true;
+        forwarding = false;
+        playing = false;
+
+        noise.stop();
+        song.pause();
+
+        forsound.stop();
+        revsound.play();
+        revclick.play();
+
+        revtimer = setInterval(function(){
+            revcounter--;
+            console.log(revcounter);
+        }, 500)
+    } 
 })
+
+$('#for').click(function(){
+    if(forwarding == false)
+    {
+        clearInterval(revtimer);
+        forwarding = true;
+        reving = false;
+        playing = false;
+
+        noise.stop();
+        song.pause();
+
+        revsound.stop();
+        forsound.play();
+        revclick.play();
+
+        fortimer = setInterval(function(){
+            forcounter++;
+            console.log(forcounter);
+        }, 500)
+    } 
+})
+
+let countersum;
+let currentpos;
+
+function stopcounters(){
+    // Neue Zeit berechnen ---------------
+    countersum = revcounter + forcounter;
+    currentpos = song.seek();
+    console.log(countersum);
+    song.seek(currentpos + countersum);
+    // -----------------------------------
+
+    // Spulenreset -----------------------
+    reving = false;
+    forwarding = false;
+    clearInterval(revtimer);
+    clearInterval(fortimer);
+    revcounter = 0;
+    forcounter = 0;
+    // -----------------------------------
+
+    // Soundstop -------------------------
+    revsound.stop();
+    forsound.stop();
+    // -----------------------------------
+}
+
+$(document).on("input", "#volslider", function () {
+    song.volume($('#volslider').val() / 100);
+  });
+  
