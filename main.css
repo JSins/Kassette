@@ -1,0 +1,78 @@
+*
+{
+    padding: 0;
+    margin: 0 auto;
+}
+
+body
+{
+    /* overflow: hidden; */
+    background: #000000;
+}
+
+#content
+{
+    height: 100vh;
+    width: 100vw;
+    max-width: 435px;
+}
+
+main
+{
+    width: 100%;
+    position: relative;
+    background-image: url(img/walkmaninnerfilled.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 80%;
+}
+
+footer
+{
+    height: 20%;
+    width: 100%;
+    background-image: url(img/controlssmall.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.clicker
+{
+    position: absolute;
+}
+
+#play
+{
+    background: #ffffff;
+    margin-left: 55%;
+    margin-top: 17%;
+    height: 6vh;
+    width: 18vw;
+}
+
+#rev
+{
+    background: orange;
+    margin-left: 79%;
+    margin-top: 17%;
+    height: 6vh;
+    width: 7vw;
+}
+
+#for
+{
+    background: red;
+    margin-left: 90%;
+    margin-top: 17%;
+    height: 6vh;
+    width: 7vw;
+}
+
+#stop
+{
+    background: #2fcf57;
+    margin-left: 58%;
+    margin-top: 4%;
+    height: 4vh;
+    width: 27vw;
+}
