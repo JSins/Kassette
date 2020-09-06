@@ -110,6 +110,7 @@ else if(playing == true)
     song.pause();
     noise.stop();
     pause.play();
+    $('footer').css("background-image", "url(img/controlsstop.png)");
 }
 })
 
