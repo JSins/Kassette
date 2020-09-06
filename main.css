@@ -128,6 +128,14 @@ footer
     position: absolute;
 }
 
+.backgroundcontrol
+{
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+}
+
 #play
 {
     background: none;
@@ -135,6 +143,7 @@ footer
     margin-top: 17%;
     height: 6vh;
     width: 18vw;
+    z-index: 5;
 }
 
 #rev
@@ -143,6 +152,7 @@ footer
     margin-top: 17%;
     height: 6vh;
     width: 7vw;
+    z-index: 5;
 }
 
 #for
@@ -151,6 +161,7 @@ footer
     margin-top: 17%;
     height: 6vh;
     width: 7vw;
+    z-index: 5;
 }
 
 #stop
@@ -159,12 +170,14 @@ footer
     margin-top: 4%;
     height: 4vh;
     width: 27vw;
+    z-index: 5;
 }
 
 #vol
 {
     margin-top: 14%;
     margin-left: 7%;
+    z-index: 5;
 }
 
 

@@ -41,12 +41,6 @@ const spulstop = new Howl({
 
 
 
-
-
-
-
-
-
 let playing = false;
 let reving = false;
 let forwarding = false;
@@ -101,7 +95,6 @@ if(playing == false)
     song.play();
     play.play();
     noise.play();
-    $('footer').css("background-image", "url(img/controlsrevfor.png)");
 }
 else if(playing == true)
 {
@@ -110,7 +103,6 @@ else if(playing == true)
     song.pause();
     noise.stop();
     pause.play();
-    $('footer').css("background-image", "url(img/controlsrevplayfor.png)");
 }
 })
 
@@ -122,8 +114,6 @@ $('#stop').click(function()
     noise.stop();
     song.pause();
     stopsound.play();
-
-    $('footer').css("background-image", "url(img/controlsrevplayfor.png)");
 })
 
 $('#rev').click(function(){
@@ -140,8 +130,6 @@ $('#rev').click(function(){
         forsound.stop();
         revsound.play();
         revclick.play();
-
-        $('footer').css("background-image", "url(img/controlsplayfor.png)");
 
         revtimer = setInterval(function(){
             currentpos = song.seek();
@@ -165,8 +153,6 @@ $('#for').click(function(){
         revsound.stop();
         forsound.play();
         revclick.play();
-
-        $('footer').css("background-image", "url(img/controlsrevplay.png)");
 
         fortimer = setInterval(function(){     
             currentpos = song.seek();
