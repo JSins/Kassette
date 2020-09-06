@@ -29,9 +29,17 @@ main
 
 #turn
 {
+    z-index: 20;
+    width: 100%;
+    height: 100%;
+}
+
+#turner
+{
     z-index: 120;
     width: 100%;
     height: 100%;
+    filter: brightness(0.7);
 }
 
 #turn1
@@ -39,7 +47,7 @@ main
     margin-top: 45%;
     margin-left: 16%;
     width: 40vw;
-    background: rgba(255, 166, 0, 0.521);
+    background: rgb(46, 31, 4);
     border-radius: 30vw;
     transform: scale(1.3);
 }
@@ -49,12 +57,35 @@ main
     margin-top: 91%;
     margin-left: 16%;
     width: 40vw;
-    background: rgba(0, 238, 255, 0.521);
+    background: rgb(46, 31, 4);
     border-radius: 30vw;
     transform: scale(0.7);
 }
 
-#turn1:after, #turn2:after
+#turner1
+{
+    margin-top: 59%;
+    margin-left: 31%;
+    width: 12vw;
+    background-image: url(img/turner.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-radius: 30vw;
+}
+
+#turner2
+{
+    margin-top: 105.5%;
+    margin-left: 31%;
+    width: 12vw;
+    background-image: url(img/turner.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-radius: 30vw;
+
+}
+
+#turn1:after, #turn2:after, #turner1:after, #turner2:after
 {
     content: "";
     display: block;
