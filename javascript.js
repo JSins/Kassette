@@ -95,6 +95,12 @@ if(playing == false)
     song.play();
     play.play();
     noise.play();
+
+    $('#controlsplayfor').hide();
+    $('#controlsrevplay').hide();
+    $('#controlsrevplayfor').hide();
+    $('#controlsrevfor').show();
+
 }
 else if(playing == true)
 {
@@ -103,6 +109,11 @@ else if(playing == true)
     song.pause();
     noise.stop();
     pause.play();
+
+    $('#controlsplayfor').hide();
+    $('#controlsrevplay').hide();
+    $('#controlsrevplayfor').show();
+    $('#controlsrevfor').hide();
 }
 })
 
@@ -114,6 +125,8 @@ $('#stop').click(function()
     noise.stop();
     song.pause();
     stopsound.play();
+
+    $('#controlsrevplayfor').show();
 })
 
 $('#rev').click(function(){
@@ -130,6 +143,11 @@ $('#rev').click(function(){
         forsound.stop();
         revsound.play();
         revclick.play();
+
+        $('#controlsplayfor').show();
+        $('#controlsrevplay').hide();
+        $('#controlsrevplayfor').hide();
+        $('#controlsrevfor').hide();
 
         revtimer = setInterval(function(){
             currentpos = song.seek();
@@ -153,6 +171,11 @@ $('#for').click(function(){
         revsound.stop();
         forsound.play();
         revclick.play();
+
+        $('#controlsplayfor').hide();
+        $('#controlsrevplay').show();
+        $('#controlsrevplayfor').hide();
+        $('#controlsrevfor').hide();
 
         fortimer = setInterval(function(){     
             currentpos = song.seek();
