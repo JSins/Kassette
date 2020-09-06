@@ -118,7 +118,7 @@ footer
 {
     height: 20%;
     width: 100%;
-    background-image: url(img/controlssmallsliderless.png);
+    background-image: url(img/controlsstop.png);
     background-size: contain;
     background-repeat: no-repeat;
 }
@@ -130,7 +130,7 @@ footer
 
 #play
 {
-    background: #ffffff;
+    background: #ffffff56;
     margin-left: 55%;
     margin-top: 17%;
     height: 6vh;
@@ -139,7 +139,7 @@ footer
 
 #rev
 {
-    background: orange;
+    background: rgba(255, 166, 0, 0.493);
     margin-left: 79%;
     margin-top: 17%;
     height: 6vh;
@@ -148,7 +148,7 @@ footer
 
 #for
 {
-    background: red;
+    background: rgba(255, 0, 0, 0.507);
     margin-left: 90%;
     margin-top: 17%;
     height: 6vh;
@@ -157,7 +157,7 @@ footer
 
 #stop
 {
-    background: #2fcf57;
+    background: #2fcf577e;
     margin-left: 58%;
     margin-top: 4%;
     height: 4vh;

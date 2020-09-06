@@ -101,6 +101,7 @@ if(playing == false)
     song.play();
     play.play();
     noise.play();
+    $('footer').css("background-image", "url(img/controlssmallsliderless.png)");
 }
 else if(playing == true)
 {
