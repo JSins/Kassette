@@ -27,6 +27,62 @@ main
     height: 80%;
 }
 
+#turn
+{
+    z-index: 120;
+    width: 100%;
+    height: 100%;
+}
+
+#turn1
+{
+    margin-top: 45%;
+    margin-left: 16%;
+    width: 40vw;
+    background: rgba(255, 166, 0, 0.521);
+    border-radius: 30vw;
+    transform: scale(1.3);
+}
+
+#turn2
+{
+    margin-top: 91%;
+    margin-left: 16%;
+    width: 40vw;
+    background: rgba(0, 238, 255, 0.521);
+    border-radius: 30vw;
+    transform: scale(0.7);
+}
+
+#turn1:after, #turn2:after
+{
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+}
+
+#cassette
+{
+    width: 100%;
+    height: 100%;
+    background-image: url(img/cassette.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 50;
+    filter: brightness(70%);
+}
+
+#deck
+{
+    width: 100%;
+    position: absolute;
+    height: 100%;
+    background-image: url(img/walkmanhole.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 100;
+}
+
 footer
 {
     height: 20%;

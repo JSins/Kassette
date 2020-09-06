@@ -48,6 +48,8 @@ let reving = false;
 let forwarding = false;
 let revtimer;
 let fortimer;
+let revcounter = 0;
+let forcounter = 0;
 
 $('#play').click(function(){
 if(playing == false)
@@ -95,9 +97,8 @@ $('#rev').click(function(){
         revclick.play();
 
         revtimer = setInterval(function(){
-            currentpos = song.seek();
-            song.seek(currentpos - 2);
-            console.log(currentpos);
+            revcounter--;
+            console.log(revcounter);
         }, 500)
     } 
 })
@@ -117,10 +118,10 @@ $('#for').click(function(){
         forsound.play();
         revclick.play();
 
-        fortimer = setInterval(function(){    
-            currentpos = song.seek();
-            song.seek(currentpos + 2);
-            console.log(currentpos);
+        fortimer = setInterval(function(){
+            song.seek();
+            forcounter++;
+            console.log(forcounter);
         }, 500)
     } 
 })
@@ -129,11 +130,20 @@ let countersum;
 let currentpos;
 
 function stopcounters(){
+    // Neue Zeit berechnen ---------------
+    countersum = revcounter + forcounter;
+    currentpos = song.seek();
+    console.log(countersum);
+    song.seek(currentpos + countersum);
+    // -----------------------------------
+
     // Spulenreset -----------------------
     reving = false;
     forwarding = false;
     clearInterval(revtimer);
     clearInterval(fortimer);
+    revcounter = 0;
+    forcounter = 0;
     // -----------------------------------
 
     // Soundstop -------------------------
@@ -152,9 +162,9 @@ song.once('load', function(){
 console.log(song.duration());
 });
 
-// setInterval(function(){
-// setsize();
-// },10);
+setInterval(function(){
+setsize();
+},10);
 
 let turn1size;
 
