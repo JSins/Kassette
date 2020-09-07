@@ -1,7 +1,7 @@
 const song = new Howl({
-    src: ["audio/anna.mp3"],
-    volume: 0.5,
-  });
+    src: ['audio/anna.mp3']
+});
+
 
 const play = new Howl({
     src: ['audio/play3.mp3']
@@ -187,6 +187,24 @@ function formusic()
 
 
 
+// function switchmusic()
+// {
+//     console.log('test');
+// }
+
+// function switcher(newSrc) {
+//     song.unload();
+//     song._src = newSrc;
+//     song.load();
+// }
+
+// $(document).on("input", "#audiofile", function () {
+//     console.log();
+//     switcher(URL.createObjectURL(this.files[0]));
+// });
+
+
+
 
 $('#play').click(function(){
 if(playing == false)
@@ -216,6 +234,10 @@ $('#for').click(function(){
     {
         formusic();
     } 
+})
+
+$('#switch').click(function(){
+    switchmusic();
 })
 
 

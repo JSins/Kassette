@@ -67,6 +67,18 @@ body
     margin-top: 20vh;
 }
 
+#picker
+{
+    position: absolute;
+    background: #ffffff;
+    margin-left: 24%;
+    width: 50%;
+    padding: 1%;
+    z-index: 500;
+    margin-top: 30%;
+    text-align: center;
+}
+
 #content
 {
     height: 100vh;
@@ -245,6 +257,16 @@ footer
     margin-top: 12.5%;
     margin-left: 7%;
     z-index: 5;
+}
+
+#switch
+{
+    margin-left: 10%;
+    margin-top: 2%;
+    height: 9vw;
+    width: 27vw;
+    z-index: 5;
+    background: lightcoral;
 }
 
 
