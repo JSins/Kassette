@@ -2,12 +2,64 @@
 {
     padding: 0;
     margin: 0 auto;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 body
 {
     overflow: hidden;
     background: #000000;
+}
+
+
+
+#loading
+{
+    position: absolute;
+    z-index: 1000;
+    height: 100vh;
+    width: 100vw;
+    background: #ffffff;
+    text-align: center;
+    padding-top: 20vh;
+}
+
+#logo
+{
+    background-image: url(img/logo.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 60vw;
+    height: 40vh;
+}
+
+#loadbox
+{
+    width: 40vw;
+    border-radius: 10px;
+    background: #ddd;
+    margin-top: 20px;
+}
+
+#load
+{
+    height: 10px;
+    background: #333;
+    width: 0%;
+    border-radius: 10px;
+    transition: 1s;
+}
+
+#km
+{
+    background-image: url(img/km.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 7vh;
+    width: 20vw;
+    margin-top: 20vh;
 }
 
 #content

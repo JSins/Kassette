@@ -1,5 +1,5 @@
 const song = new Howl({
-    src: ["audio/crosby.mp3"],
+    src: ["audio/anna.mp3"],
     volume: 0.5,
   });
 
@@ -38,6 +38,21 @@ const revclick = new Howl({
 const spulstop = new Howl({
     src: ['audio/spulstop.mp3']
 })
+
+
+
+// Laden und ausfaden ---------------------------
+song.once('load', function(){
+    console.log(song.duration());
+    $('#loadcontent').fadeIn(1000);
+    setTimeout(function(){
+        $('#load').css("width", "100%");
+        setTimeout(function(){
+            $('#loading').fadeOut(1000);
+        }, 2500)
+    }, 2000)
+});
+// ----------------------------------------------
 
 
 
@@ -208,9 +223,7 @@ $(document).on("input", "#volslider", function () {
 
 
 
-// song.once('load', function(){
-// console.log(song.duration());
-// });
+
 
 let turn1size;
 let turn2size;
