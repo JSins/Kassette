@@ -2,7 +2,6 @@ const song = new Howl({
     src: ['audio/volume4.mp3']
 });
 
-
 const play = new Howl({
     src: ['audio/play3.mp3']
 })
@@ -41,14 +40,13 @@ const revclick = new Howl({
 
     
 $('#loadcontent').fadeIn(1000);
-setTimeout(function(){
-    song.once('load', function(){
-        $('#load').css("width", "100%");
-        setTimeout(function(){
-            $('#loading').fadeOut(1000);
-        }, 1000)
-    })
-}, 2000);
+
+song.once('load', function(){
+    $('#load').css("width", "100%");
+    setTimeout(function(){
+        $('#loading').fadeOut(1000);
+    }, 1000)
+})  
 // ----------------------------------------------
 
 
