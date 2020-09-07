@@ -13,6 +13,7 @@ html
 body
 {
     overflow: hidden;
+    background: #000000;
 }
 
 
@@ -206,7 +207,7 @@ footer
     height: 10vw;
     width: 18vw;
     z-index: 5;
-    background: lightcoral;
+    /* background: lightcoral; */
 }
 
 #rev
@@ -216,7 +217,7 @@ footer
     height: 9vw;
     width: 7vw;
     z-index: 5;
-    background: lightcoral;
+    /* background: lightcoral; */
 }
 
 #for
@@ -226,7 +227,7 @@ footer
     height: 9vw;
     width: 7vw;
     z-index: 5;
-    background: lightcoral;
+    /* background: lightcoral; */
 }
 
 #stop
@@ -236,7 +237,7 @@ footer
     height: 7vw;
     width: 27vw;
     z-index: 5;
-    background: lightcoral;
+    /* background: lightcoral; */
 }
 
 #vol

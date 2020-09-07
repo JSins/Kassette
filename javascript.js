@@ -13,7 +13,8 @@ const pause = new Howl({
 
 const noise = new Howl({
     src: ['audio/noise.mp3'],
-    loop: true
+    loop: true,
+    volume: 0.7
 })
 
 const stopsound = new Howl({
