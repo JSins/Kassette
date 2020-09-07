@@ -1,9 +1,11 @@
 const song = new Howl({
-    src: ['audio/volume4.mp3']
+    src: ['audio/volume4.mp3'],
+    html5: true
 });
 
 const play = new Howl({
-    src: ['audio/play3.mp3']
+    src: ['audio/play3.mp3'],
+    html5: true
 })
 
 const pause = new Howl({
@@ -13,25 +15,30 @@ const pause = new Howl({
 const noise = new Howl({
     src: ['audio/noise.mp3'],
     loop: true,
+    html5: true,
     volume: 0.2
 })
 
 const stopsound = new Howl({
-    src: ['audio/stop.mp3']
+    src: ['audio/stop.mp3'],
+    html5: true
 })
 
 const revsound = new Howl({
     src: ['audio/rev.mp3'],
+    html5: true,
     loop: true
 })
 
 const forsound = new Howl({
     src: ['audio/for.mp3'],
+    html5: true,
     loop: true
 })
 
 const revclick = new Howl({
     src: ['audio/revclick.mp3'],
+    html5: true,
     volume: 0.5
 })
 
@@ -42,10 +49,12 @@ const revclick = new Howl({
 $('#loadcontent').fadeIn(1000);
 
 song.once('load', function(){
-    $('#load').css("width", "100%");
     setTimeout(function(){
-        $('#loading').fadeOut(1000);
-    }, 1000)
+        $('#load').css("width", "100%");
+        setTimeout(function(){
+            $('#loading').fadeOut(1000);
+        }, 1000)
+    }, 2000)
 })  
 // ----------------------------------------------
 
@@ -267,7 +276,6 @@ $(document).on("input", "#volslider", function () {
 
 // Spulengröße setzen -----------------------------------------
 function setsize(){
-    console.log(song.seek());
     turn1size = 1.3 - song.seek() * (0.6 / song.duration());
     $('#turn1').css("transform", "scale(" + turn1size + ")");
 
