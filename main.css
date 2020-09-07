@@ -67,7 +67,7 @@ body
     height: 100vh;
     width: 100vw;
     max-width: 435px;
-    min-height: 782px;
+    min-height: 500px;
     border-style: solid;
     overflow: hidden;
 }
@@ -273,3 +273,12 @@ input[type=range]:focus {
 input[type=range]:focus::-webkit-slider-runnable-track {
     background: #ccc;
 }
+
+
+/* Minimum aspect ratio */
+@media (min-aspect-ratio: 413/782) {
+    #cassette, #deck, main
+    {
+        background-size: cover;
+    }
+  }
