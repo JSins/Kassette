@@ -36,6 +36,21 @@ const forsound = new Howl({
     loop: true
 })
 
+const play1 = new Howl({
+    src: ['audio/play3_01.mp3'],
+    html5: true
+})
+
+const pause1 = new Howl({
+    src: ['audio/pause_01.mp3'],
+    html5: true
+})
+
+const stop1 = new Howl({
+    src: ['audio/stop_01.mp3'],
+    html5: true
+})
+
 const revclick = new Howl({
     src: ['audio/revclick.mp3'],
     html5: true,
@@ -77,9 +92,12 @@ let turn2size;
 
 function playmusic()
 {
+
+    play1.play();
+    noise.play();
     stopcounters();
     playing = true;
-    noise.play();
+    
     song.play();
     play.play();
     
@@ -101,6 +119,7 @@ function playmusic()
 
 function pausemusic()
 {
+    pause1.play();
     playing = false;
     song.pause();
     noise.stop();
@@ -114,6 +133,7 @@ function pausemusic()
 
 function stopmusic()
 {
+    stop1.play();
     stopcounters();
     playing = false;
     noise.stop();
@@ -192,26 +212,6 @@ function formusic()
         $('#turner2').css("transform", "rotate(" + rotation2 + "deg)");
     }, 50)
 }
-
-
-
-// function switchmusic()
-// {
-//     console.log('test');
-// }
-
-// function switcher(newSrc) {
-//     song.unload();
-//     song._src = newSrc;
-//     song.load();
-// }
-
-// $(document).on("input", "#audiofile", function () {
-//     console.log();
-//     switcher(URL.createObjectURL(this.files[0]));
-// });
-
-
 
 
 $('#play').click(function(){
