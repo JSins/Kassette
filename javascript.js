@@ -57,7 +57,6 @@ song.once('load', function(){
 // ----------------------------------------------
 
 
-
 let playing = false;
 let reving = false;
 let forwarding = false;
@@ -67,51 +66,27 @@ let timer;
 let timerintervall;
 let rotation1 = 0;
 let rotation2 = 0;
+let playturn;
+let revtun;
+let forturn;
+let currentpos;
+let turn1size;
+let turn2size;
+
+
 
 function startetimer(){
     timer = setInterval(function(){
-        if(song.seek() < song.duration())
-        {
-            setsize();
-        }
-    
-        if(playing == true)
-        {
-            rotation1 = rotation1 + 5 + 0.03 * song.seek();
-            rotation2 = rotation2 + 10 - 0.03 * song.seek();
-            $('#turner1').css("transform", "rotate(" + rotation1 + "deg)");
-            $('#turner2').css("transform", "rotate(" + rotation2 + "deg)");
-        }
-    
-        if(forwarding == true)
-        {
-            rotation1 = rotation1 + 25;
-            rotation2 = rotation2 + 25;
-            $('#turner1').css("transform", "rotate(" + rotation1 + "deg)");
-            $('#turner2').css("transform", "rotate(" + rotation2 + "deg)");
-        }
-    
-        if(reving == true)
-        {
-            rotation1 = rotation1 - 25;
-            rotation2 = rotation2 - 25;
-            $('#turner1').css("transform", "rotate(" + rotation1 + "deg)");
-            $('#turner2').css("transform", "rotate(" + rotation2 + "deg)");
-        }
-    
-        endchecker();
+
     },50);
 }
 
 
 
-
-$('#play').click(function(){
-if(playing == false)
+function playmusic()
 {
     stopcounters();
     playing = true;
-
     song.play();
     play.play();
     noise.play();
@@ -121,92 +96,144 @@ if(playing == false)
     $('#controlsrevplayfor').hide();
     $('#controlsrevfor').show();
 
+    playturn = setInterval(function(){
+        console.log('playing');
+        setsize();
+        rotation1 = rotation1 + 5 + 0.03 * song.seek();
+        rotation2 = rotation2 + 10 - 0.03 * song.seek();
+        $('#turner1').css("transform", "rotate(" + rotation1 + "deg)");
+        $('#turner2').css("transform", "rotate(" + rotation2 + "deg)");
+    },50);
 }
-else if(playing == true)
+
+function pausemusic()
 {
     playing = false;
-
     song.pause();
     noise.stop();
     pause.play();
-
     $('#controlsplayfor').hide();
     $('#controlsrevplay').hide();
     $('#controlsrevplayfor').show();
     $('#controlsrevfor').hide();
+    clearInterval(playturn);
+}
+
+function stopmusic()
+{
+    stopcounters();
+    playing = false;
+    noise.stop();
+    song.pause();
+    stopsound.play();
+    $('#controlsplayfor').hide();
+    $('#controlsrevplay').hide();
+    $('#controlsrevplayfor').show();
+    $('#controlsrevfor').hide();
+    clearInterval(playturn);
+}
+
+function revmusic()
+{
+    clearInterval(playturn);
+    clearInterval(fortimer);
+    reving = true;
+    forwarding = false;
+    playing = false;
+
+    noise.stop();
+    song.pause();
+
+    forsound.stop();
+    revsound.play();
+    revclick.play();
+
+    $('#controlsplayfor').show();
+    $('#controlsrevplay').hide();
+    $('#controlsrevplayfor').hide();
+    $('#controlsrevfor').hide();
+
+    revtimer = setInterval(function(){
+        console.log('revving');
+        setsize();
+        currentpos = song.seek();
+        song.seek(currentpos - 0.5);
+
+        rotation1 = rotation1 - 25;
+        rotation2 = rotation2 - 25;
+        $('#turner1').css("transform", "rotate(" + rotation1 + "deg)");
+        $('#turner2').css("transform", "rotate(" + rotation2 + "deg)");
+    }, 50)
+}
+
+function formusic()
+{
+    clearInterval(playturn);
+    clearInterval(revtimer);
+    forwarding = true;
+    reving = false;
+    playing = false;
+
+    noise.stop();
+    song.pause();
+
+    revsound.stop();
+    forsound.play();
+    revclick.play();
+
+    $('#controlsplayfor').hide();
+    $('#controlsrevplay').show();
+    $('#controlsrevplayfor').hide();
+    $('#controlsrevfor').hide();
+
+    fortimer = setInterval(function(){    
+        console.log('forwarding'); 
+        endchecker();
+        setsize();
+        currentpos = song.seek();
+        song.seek(currentpos + 0.5);
+
+        rotation1 = rotation1 + 25;
+        rotation2 = rotation2 + 25;
+        $('#turner1').css("transform", "rotate(" + rotation1 + "deg)");
+        $('#turner2').css("transform", "rotate(" + rotation2 + "deg)");
+    }, 50)
+}
+
+
+
+
+$('#play').click(function(){
+if(playing == false)
+{
+    playmusic();
+}
+else if(playing == true)
+{
+    pausemusic();
 }
 })
 
 $('#stop').click(function()
 {
-    stopcounters();
-    playing = false;
-
-    noise.stop();
-    song.pause();
-    stopsound.play();
-
-    $('#controlsrevplayfor').show();
+    stopmusic();
 })
 
 $('#rev').click(function(){
     if(reving == false)
     {
-        clearInterval(fortimer);
-        reving = true;
-        forwarding = false;
-        playing = false;
-
-        noise.stop();
-        song.pause();
-
-        forsound.stop();
-        revsound.play();
-        revclick.play();
-
-        $('#controlsplayfor').show();
-        $('#controlsrevplay').hide();
-        $('#controlsrevplayfor').hide();
-        $('#controlsrevfor').hide();
-
-        revtimer = setInterval(function(){
-            currentpos = song.seek();
-            song.seek(currentpos - 0.5);
-            console.log(currentpos);
-        }, 50)
+        revmusic();
     } 
 })
 
 $('#for').click(function(){
     if(forwarding == false)
     {
-        clearInterval(revtimer);
-        forwarding = true;
-        reving = false;
-        playing = false;
-
-        noise.stop();
-        song.pause();
-
-        revsound.stop();
-        forsound.play();
-        revclick.play();
-
-        $('#controlsplayfor').hide();
-        $('#controlsrevplay').show();
-        $('#controlsrevplayfor').hide();
-        $('#controlsrevfor').hide();
-
-        fortimer = setInterval(function(){     
-            currentpos = song.seek();
-            song.seek(currentpos + 0.5);
-            console.log(currentpos);
-        }, 50)
+        formusic();
     } 
 })
 
-let countersum;
-let currentpos;
+
 
 function stopcounters(){
     // Spulenreset -----------------------
@@ -222,24 +249,28 @@ function stopcounters(){
     // -----------------------------------
 }
 
+
+// Volume ------------------------------------------
 $(document).on("input", "#volslider", function () {
     song.volume($('#volslider').val() / 100);
 });
+// -------------------------------------------------
 
 
 
 
-
-let turn1size;
-let turn2size;
-
+// Spulengröße setzen -----------------------------------------
 function setsize(){
+    console.log(song.seek());
     turn1size = 1.3 - song.seek() * (0.6 / song.duration());
     $('#turn1').css("transform", "scale(" + turn1size + ")");
 
     turn2size = 0.7 + song.seek() * (0.6 / song.duration());
     $('#turn2').css("transform", "scale(" + turn2size + ")");
 }
+// ------------------------------------------------------------
+
+
 
 function endchecker(){
     if(song.seek() >= song.duration())
@@ -255,8 +286,6 @@ function endchecker(){
 }
 
 song.on('end', function(){
-    playing = false;
-    noise.stop();
-    stopsound.play();
+    stopmusic();
 });
   
