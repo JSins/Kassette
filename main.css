@@ -67,6 +67,9 @@ body
     height: 100vh;
     width: 100vw;
     max-width: 435px;
+    min-height: 782px;
+    border-style: solid;
+    overflow: hidden;
 }
 
 main
@@ -170,6 +173,7 @@ footer
 {
     height: 20%;
     width: 100%;
+    max-width: 435px;
     background-image: url(img/controlsrevplayfor.png);
     background-size: contain;
     background-repeat: no-repeat;
