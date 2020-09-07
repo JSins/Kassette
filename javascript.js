@@ -1,5 +1,5 @@
 const song = new Howl({
-    src: ['audio/anna.mp3']
+    src: ['audio/volume4.mp3']
 });
 
 
@@ -14,11 +14,11 @@ const pause = new Howl({
 const noise = new Howl({
     src: ['audio/noise.mp3'],
     loop: true,
-    volume: 0.7
+    volume: 0.2
 })
 
 const stopsound = new Howl({
-    src: ['audio/Stop.mp3']
+    src: ['audio/stop.mp3']
 })
 
 const revsound = new Howl({
@@ -38,15 +38,17 @@ const revclick = new Howl({
 
 
 // Laden und ausfaden ---------------------------
-song.once('load', function(){
+
+    
+$('#loadcontent').fadeIn(1000);
+setTimeout(function(){
+    song.once('load', function(){
     console.log(song.duration());
-    $('#loadcontent').fadeIn(1000);
+    $('#load').css("width", "100%");
     setTimeout(function(){
-        $('#load').css("width", "100%");
-        setTimeout(function(){
-            $('#loading').fadeOut(1000);
-        }, 2500)
-    }, 2000)
+        $('#loading').fadeOut(1000);
+    }, 2500)
+}, 2000)
 });
 // ----------------------------------------------
 
@@ -84,8 +86,8 @@ function playmusic()
     playturn = setInterval(function(){
         console.log('playing');
         setsize();
-        rotation1 = rotation1 + 5 + (song.seek()/15);
-        rotation2 = rotation2 + 5 + ((song.duration() - song.seek())/15);
+        rotation2 = rotation2 + 17 - song.seek() * (12 / song.duration());
+        rotation1 = rotation1 + 5 + song.seek() * (12 / song.duration());
         $('#turner1').css("transform", "rotate(" + rotation1 + "deg)");
         $('#turner2').css("transform", "rotate(" + rotation2 + "deg)");
     },50);
@@ -142,7 +144,7 @@ function revmusic()
         console.log('revving');
         setsize();
         currentpos = song.seek();
-        song.seek(currentpos - 0.5);
+        song.seek(currentpos - 0.7);
 
         rotation1 = rotation1 - 25;
         rotation2 = rotation2 - 25;
@@ -176,7 +178,7 @@ function formusic()
         endchecker();
         setsize();
         currentpos = song.seek();
-        song.seek(currentpos + 0.5);
+        song.seek(currentpos + 0.7);
 
         rotation1 = rotation1 + 25;
         rotation2 = rotation2 + 25;
