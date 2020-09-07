@@ -36,11 +36,6 @@ const revclick = new Howl({
     volume: 0.5
 })
 
-const spulstop = new Howl({
-    src: ['audio/spulstop.mp3']
-})
-
-
 
 // Laden und ausfaden ---------------------------
 song.once('load', function(){
