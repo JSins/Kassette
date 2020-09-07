@@ -48,6 +48,7 @@ song.once('load', function(){
     setTimeout(function(){
         $('#load').css("width", "100%");
         setTimeout(function(){
+            startetimer();
             $('#loading').fadeOut(1000);
         }, 2500)
     }, 2000)
@@ -66,39 +67,42 @@ let timerintervall;
 let rotation1 = 0;
 let rotation2 = 0;
 
+function startetimer(){
+    timer = setInterval(function(){
+        if(song.seek() < song.duration())
+        {
+            setsize();
+        }
+    
+        if(playing == true)
+        {
+            rotation1 = rotation1 + 5 + 0.03 * song.seek();
+            rotation2 = rotation2 + 10 - 0.03 * song.seek();
+            $('#turner1').css("transform", "rotate(" + rotation1 + "deg)");
+            $('#turner2').css("transform", "rotate(" + rotation2 + "deg)");
+        }
+    
+        if(forwarding == true)
+        {
+            rotation1 = rotation1 + 25;
+            rotation2 = rotation2 + 25;
+            $('#turner1').css("transform", "rotate(" + rotation1 + "deg)");
+            $('#turner2').css("transform", "rotate(" + rotation2 + "deg)");
+        }
+    
+        if(reving == true)
+        {
+            rotation1 = rotation1 - 25;
+            rotation2 = rotation2 - 25;
+            $('#turner1').css("transform", "rotate(" + rotation1 + "deg)");
+            $('#turner2').css("transform", "rotate(" + rotation2 + "deg)");
+        }
+    
+        endchecker();
+    },50);
+}
 
-timer = setInterval(function(){
-    if(song.seek() < song.duration())
-    {
-        setsize();
-    }
 
-    if(playing == true)
-    {
-        rotation1 = rotation1 + 5 + 0.03 * song.seek();
-        rotation2 = rotation2 + 10 - 0.03 * song.seek();
-        $('#turner1').css("transform", "rotate(" + rotation1 + "deg)");
-        $('#turner2').css("transform", "rotate(" + rotation2 + "deg)");
-    }
-
-    if(forwarding == true)
-    {
-        rotation1 = rotation1 + 25;
-        rotation2 = rotation2 + 25;
-        $('#turner1').css("transform", "rotate(" + rotation1 + "deg)");
-        $('#turner2').css("transform", "rotate(" + rotation2 + "deg)");
-    }
-
-    if(reving == true)
-    {
-        rotation1 = rotation1 - 25;
-        rotation2 = rotation2 - 25;
-        $('#turner1').css("transform", "rotate(" + rotation1 + "deg)");
-        $('#turner2').css("transform", "rotate(" + rotation2 + "deg)");
-    }
-
-    endchecker();
-},50);
 
 
 $('#play').click(function(){
