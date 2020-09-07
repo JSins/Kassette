@@ -71,9 +71,10 @@ function playmusic()
 {
     stopcounters();
     playing = true;
+    noise.play();
     song.play();
     play.play();
-    noise.play();
+    
 
     $('#controlsplayfor').hide();
     $('#controlsrevplay').hide();
@@ -83,8 +84,8 @@ function playmusic()
     playturn = setInterval(function(){
         console.log('playing');
         setsize();
-        rotation1 = rotation1 + 5 + 0.03 * song.seek();
-        rotation2 = rotation2 + 10 - 0.03 * song.seek();
+        rotation1 = rotation1 + 5 + (song.seek()/15);
+        rotation2 = rotation2 + 5 + ((song.duration() - song.seek())/15);
         $('#turner1').css("transform", "rotate(" + rotation1 + "deg)");
         $('#turner2').css("transform", "rotate(" + rotation2 + "deg)");
     },50);
