@@ -49,7 +49,6 @@ song.once('load', function(){
     setTimeout(function(){
         $('#load').css("width", "100%");
         setTimeout(function(){
-            startetimer();
             $('#loading').fadeOut(1000);
         }, 2500)
     }, 2000)
@@ -72,16 +71,6 @@ let forturn;
 let currentpos;
 let turn1size;
 let turn2size;
-
-
-
-function startetimer(){
-    timer = setInterval(function(){
-
-    },50);
-}
-
-
 
 function playmusic()
 {
