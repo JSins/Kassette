@@ -43,13 +43,13 @@ const revclick = new Howl({
 $('#loadcontent').fadeIn(1000);
 setTimeout(function(){
     song.once('load', function(){
-    console.log(song.duration());
-    $('#load').css("width", "100%");
-    setTimeout(function(){
-        $('#loading').fadeOut(1000);
-    }, 2500)
-}, 2000)
-});
+        console.log(song.duration());
+        $('#load').css("width", "100%");
+        setTimeout(function(){
+            $('#loading').fadeOut(1000);
+        }, 2500)
+    })
+}, 2000);
 // ----------------------------------------------
 
 
